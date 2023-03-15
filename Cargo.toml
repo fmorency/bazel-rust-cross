@@ -6,4 +6,4 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-openssl = "0.10.45"
+webauthn-authenticator-rs = { git = "https://github.com/kanidm/webauthn-rs", features = ["u2fhid", "usb"], rev = "e9ebff3123263073c3668228fa088f007f3fa555" }

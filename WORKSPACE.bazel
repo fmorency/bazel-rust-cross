@@ -35,6 +35,30 @@ crates_repository(
     name = "crate_index",
     cargo_lockfile = "//:Cargo.Bazel.lock",
     annotations = {
+        "hidapi": [
+            crate.annotation(
+                build_script_data = [
+                    "@org_ll_sysroot_linux_aarch64//:sysroot",
+                ],
+                build_script_env = {
+                    "PKG_CONFIG_ALLOW_CROSS": "1",
+                    "PKG_CONFIG_SYSROOT_DIR": "$(execpath @org_ll_sysroot_linux_aarch64//:sysroot)",
+                    "PKG_CONFIG_PATH": "$(execpath @org_ll_sysroot_linux_aarch64//:sysroot)/usr/lib/pkgconfig",
+                },
+            ),
+        ],
+        "libudev-sys": [crate.annotation(
+            build_script_data = [
+                "@org_ll_sysroot_linux_aarch64//:sysroot",
+            ],
+            build_script_env = {
+                "PKG_CONFIG_ALLOW_CROSS": "1",
+                "PKG_CONFIG_SYSROOT_DIR": "$(execpath @org_ll_sysroot_linux_aarch64//:sysroot)",
+                "PKG_CONFIG_PATH": "$(execpath @org_ll_sysroot_linux_aarch64//:sysroot)/usr/lib/pkgconfig",
+            },
+            patch_args = ["-p1"],
+            patches = ["@//third_party/cargo/patches:libudev-sys-0.1.4.patch"],
+        )],
         "openssl-sys": [crate.annotation(
             build_script_data = [
                 "@org_ll_sysroot_linux_aarch64//:sysroot",
