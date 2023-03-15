@@ -1,5 +1,5 @@
 {
-  "checksum": "8537cb742070794470d7a7c076208cfd848f5934d12b426e731538f30fd2e6f7",
+  "checksum": "703a82c38cc8c4f85e025c287cd3b3bf69d3408960bc1a1a6906eca001a9746c",
   "crates": {
     "autocfg 1.1.0": {
       "name": "autocfg",
@@ -543,8 +543,9 @@
         },
         "build_script_env": {
           "common": {
-            "AARCH64_UNKNOWN_LINUX_GNU_OPENSSL_INCLUDE_DIR": "$(execpath @org_ll_sysroot_linux_aarch64//:sysroot)/usr/include/",
-            "AARCH64_UNKNOWN_LINUX_GNU_OPENSSL_LIB_DIR": "$(execpath @org_ll_sysroot_linux_aarch64//:sysroot)/usr/lib/aarch64-linux-gnu"
+            "PKG_CONFIG_ALLOW_CROSS": "1",
+            "PKG_CONFIG_PATH": "$(execpath @org_ll_sysroot_linux_aarch64//:sysroot)/usr/lib/pkgconfig",
+            "PKG_CONFIG_SYSROOT_DIR": "$(execpath @org_ll_sysroot_linux_aarch64//:sysroot)"
           },
           "selects": {}
         },
